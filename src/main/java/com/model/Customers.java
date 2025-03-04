@@ -29,10 +29,10 @@ public class Customers {
     private String email;
     @NotEmpty
     private String phoneNumber;
-    @NotEmpty
-    private String city;
-    @NotEmpty
-    private String state;
+//    @NotEmpty
+//    private String city;
+//    @NotEmpty
+//    private String state;
     
 
     @NotEmpty
@@ -100,19 +100,5 @@ public class Customers {
 //        this.state = state;
 //    }
 
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
+	
 }

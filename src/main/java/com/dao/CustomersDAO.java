@@ -11,6 +11,7 @@ public interface CustomersDAO extends JpaRepository<Customers, Long> {
 	// Custom query method to find by first name and last name
     Customers findByFirstNameAndLastName(String firstName, String lastName);
  // Custom query method to find by city
+    @Query("SELECT c FROM Customers c WHERE c.address.city = :city")
     List<Customers> findByCity(String city);
     //custom query for finding customers by state
     @Query("SELECT c FROM Customers c WHERE c.address.state = :state")
