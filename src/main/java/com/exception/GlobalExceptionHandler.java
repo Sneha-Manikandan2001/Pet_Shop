@@ -17,9 +17,16 @@ public class GlobalExceptionHandler {
         Map<String, Object> response = new HashMap<>();
         response.put("timeStamp", new Date());
         response.put("message", "Validation failed");
-
+        e.printStackTrace();
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
-
+    
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleResourceNotFoundException(ResourceNotFoundException e) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("timeStamp", new Date());
+        response.put("message", e.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
     
 }

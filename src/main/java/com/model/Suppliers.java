@@ -27,7 +27,7 @@ public class Suppliers {
     @NotEmpty
     private String email;
 
-    @NotEmpty
+   
     @ManyToOne
     @JoinColumn(name = "address_id") //joins addresses table with this table
     private Addresses address;

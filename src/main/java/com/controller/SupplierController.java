@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.exception.ResourceNotFoundException;
 import com.model.Suppliers;
 import com.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class SupplierController {
     public List<Suppliers> getAllSuppliers() {
         List<Suppliers> suppliers = supplierService.getAllSuppliers();
         if (suppliers == null || suppliers.isEmpty()) {
-            throw new RuntimeException("No suppliers found");
+            throw new ResourceNotFoundException("No suppliers found");
         }
         return suppliers;
     }
@@ -32,7 +33,7 @@ public class SupplierController {
     public Suppliers getSupplierById(@PathVariable Long supplierId) {
         Suppliers supplier = supplierService.getSupplierById(supplierId);
         if (supplier == null) {
-            throw new RuntimeException("Supplier not found");
+            throw new ResourceNotFoundException("Supplier not found");
         }
         return supplier;
     }
@@ -41,7 +42,7 @@ public class SupplierController {
     public List<Suppliers> getSuppliersByName(@PathVariable String name) {
         List<Suppliers> suppliers = supplierService.getSuppliersByName(name);
         if (suppliers == null || suppliers.isEmpty()) {
-            throw new RuntimeException("No suppliers found with the given name");
+            throw new ResourceNotFoundException("No suppliers found with the given name");
         }
         return suppliers;
     }
@@ -50,7 +51,7 @@ public class SupplierController {
     public List<Suppliers> getSuppliersByCity(@PathVariable String cityName) {
         List<Suppliers> suppliers = supplierService.getSuppliersByCity(cityName);
         if (suppliers == null || suppliers.isEmpty()) {
-            throw new RuntimeException("No suppliers found in the given city");
+            throw new ResourceNotFoundException("No suppliers found in the given city");
         }
         return suppliers;
     }
@@ -59,7 +60,8 @@ public class SupplierController {
     public List<Suppliers> getSuppliersByState(@PathVariable String stateName) {
         List<Suppliers> suppliers = supplierService.getSuppliersByState(stateName);
         if (suppliers == null || suppliers.isEmpty()) {
-            throw new RuntimeException("No suppliers found in the given state");
+           
+        	throw new ResourceNotFoundException("No suppliers found in the given state");
         }
         return suppliers;
     }
@@ -67,7 +69,7 @@ public class SupplierController {
     @PostMapping("/add")
     public ResponseEntity<Map<String, Object>> addSupplier(@RequestBody Suppliers supplier) {
         if (supplier == null) {
-            throw new RuntimeException("Invalid supplier data");
+            throw new RuntimeException("Invalid");
         }
         supplierService.addSupplier(supplier);
         
@@ -81,7 +83,7 @@ public class SupplierController {
     @PutMapping("/update/{supplierId}")
     public ResponseEntity<Map<String, Object>> updateSupplier(@PathVariable Long supplierId, @RequestBody Suppliers supplier) {
         if (supplier == null) {
-            throw new RuntimeException("Invalid supplier data");
+        	throw new RuntimeException("Invalid");
         }
         supplierService.updateSupplier(supplierId, supplier);
         

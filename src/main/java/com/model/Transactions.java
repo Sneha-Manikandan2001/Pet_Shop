@@ -15,6 +15,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 
 @Entity
@@ -24,24 +25,24 @@ public class Transactions {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long transactionId;
 
-    @NotEmpty
+    
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customers customer;
 
-    @NotEmpty
+    
     @ManyToOne
     @JoinColumn(name = "pet_id")
     private Pets pet;
 
-    @NotEmpty
+    @NotNull
     @Temporal(TemporalType.DATE)//Maps the field to a SQL DATE type, storing only the date part (year, month, day).
     private Date transactionDate;
 
-    @NotEmpty
+    @NotNull
     private double amount;
     
-    @NotEmpty
+    @NotNull
     @Column(name = "transaction_status")
     @Enumerated(EnumType.STRING)	//to specify how an enum type should be persisted in the database
     private TransactionStatus transactionStatus;

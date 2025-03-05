@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.exception.ResourceNotFoundException;
 import com.model.TransactionStatus;
 import com.model.Transactions;
 import com.service.TransactionService;
@@ -24,7 +25,7 @@ public class TransactionController {
     public List<Transactions> getAllTransactions() {
         List<Transactions> transactions = transactionService.getAllTransactions();
         if (transactions == null || transactions.isEmpty()) {
-            throw new RuntimeException("No transactions found");
+            throw new ResourceNotFoundException("No transactions found");
         }
         return transactions;
     }
@@ -33,7 +34,7 @@ public class TransactionController {
     public Transactions getTransactionById(@PathVariable Long transactionId) {
         Transactions transaction = transactionService.getTransactionById(transactionId);
         if (transaction == null) {
-            throw new RuntimeException("Transaction not found");
+            throw new ResourceNotFoundException("Transaction not found");
         }
         return transaction;
     }
@@ -42,7 +43,7 @@ public class TransactionController {
     public List<Transactions> getTransactionsByCustomerId(@PathVariable Long customerId) {
         List<Transactions> transactions = transactionService.getTransactionsByCustomerId(customerId);
         if (transactions == null || transactions.isEmpty()) {
-            throw new RuntimeException("No transactions found for customer");
+            throw new ResourceNotFoundException("No transactions found for customer");
         }
         return transactions;
     }
@@ -51,7 +52,7 @@ public class TransactionController {
     public List<Transactions> getSuccessfulTransactions() {
         List<Transactions> transactions = transactionService.getTransactionsByStatus(TransactionStatus.Success);
         if (transactions == null || transactions.isEmpty()) {
-            throw new RuntimeException("No successful transactions found");
+            throw new ResourceNotFoundException("No successful transactions found");
         }
         return transactions;
     }
@@ -60,7 +61,7 @@ public class TransactionController {
     public List<Transactions> getFailedTransactions() {
         List<Transactions> transactions = transactionService.getTransactionsByStatus(TransactionStatus.Failed);
         if (transactions == null || transactions.isEmpty()) {
-            throw new RuntimeException("No failed transactions found");
+            throw new ResourceNotFoundException("No failed transactions found");
         }
         return transactions;
     }
@@ -68,7 +69,7 @@ public class TransactionController {
     @PostMapping("/add")
     public ResponseEntity<Map<String, Object>> addTransaction(@RequestBody Transactions transaction) {
         if (transaction == null) {
-            throw new RuntimeException("Invalid transaction data");
+        	throw new RuntimeException("Invalid");
         }
         transactionService.addTransaction(transaction);
         
@@ -82,7 +83,7 @@ public class TransactionController {
     @PutMapping("/update/{transactionId}")
     public ResponseEntity<Map<String, Object>> updateTransaction(@PathVariable Long transactionId, @RequestBody Transactions transaction) {
         if (transaction == null) {
-            throw new RuntimeException("Invalid transaction data");
+        	throw new RuntimeException("Invalid");
         }
         transactionService.updateTransaction(transactionId, transaction);
         

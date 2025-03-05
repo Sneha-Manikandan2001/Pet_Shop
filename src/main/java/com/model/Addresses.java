@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 public class Addresses {
  
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue//(strategy = GenerationType.IDENTITY)
     private Long addressId;
  
     private String street;
