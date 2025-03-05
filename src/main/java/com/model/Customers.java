@@ -1,8 +1,6 @@
 package com.model;
 
-
 import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,17 +27,11 @@ public class Customers {
     private String email;
     @NotEmpty
     private String phoneNumber;
-//    @NotEmpty
-//    private String city;
-//    @NotEmpty
-//    private String state;
-    
 
-    @NotEmpty
     @ManyToOne
     @JoinColumn(name = "address_id")
     private Addresses address;
-    @NotEmpty
+
     @OneToMany(mappedBy = "customer")
     private List<Transactions> transactions;
 
@@ -92,13 +84,12 @@ public class Customers {
     public void setAddress(Addresses address) {
         this.address = address;
     }
-//    public String getState() { // Add this getter
-//        return state;
-//    }
-//
-//    public void setState(String state) { // Add this setter
-//        this.state = state;
-//    }
 
-	
+    public List<Transactions> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transactions> transactions) {
+        this.transactions = transactions;
+    }
 }

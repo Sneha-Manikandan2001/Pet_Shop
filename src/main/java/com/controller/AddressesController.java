@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.dao.AddressesDAO;
+import com.exception.ResourceNotFoundException;
 import com.model.Addresses;
 
 import java.time.LocalDate;
@@ -25,7 +26,7 @@ public class AddressesController {
     public ResponseEntity<List<Addresses>> getAllAddresses() {
         List<Addresses> addresses = addressesDAO.findAll();
         if (addresses == null || addresses.isEmpty()) {
-            throw new RuntimeException("Validation failed");
+            throw new ResourceNotFoundException("Address not found");
         }
         return ResponseEntity.ok(addresses);
     }
@@ -36,7 +37,7 @@ public class AddressesController {
         if (address.isPresent()) {
             return ResponseEntity.ok(address.get());
         } else {
-            throw new RuntimeException("Validation failed");
+            throw new ResourceNotFoundException("Address not found");
         }
     }
 
@@ -76,11 +77,5 @@ public class AddressesController {
         }
     }
 
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<Map<String, String>> handleRuntimeException(RuntimeException e) {
-        Map<String, String> response = new HashMap<>();
-        response.put("timeStamp", LocalDate.now().toString());
-        response.put("message", "Validation failed");
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-    }
+   
 }

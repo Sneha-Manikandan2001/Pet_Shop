@@ -38,10 +38,10 @@ public class Transactions {
     @Column(name = "transaction_status")
     @Enumerated(EnumType.STRING)	//to specify how an enum type should be persisted in the database
     private TransactionStatus transactionStatus;
-    enum TransactionStatus {
-        SUCCESS,
-        FAILED
-    }
+//    enum TransactionStatus {
+//        SUCCESS,
+//        FAILED
+//    }
     private String status;
  
     // Getters and Setters
