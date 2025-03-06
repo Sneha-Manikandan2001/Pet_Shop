@@ -1,4 +1,5 @@
 package com.model;
+<<<<<<< HEAD
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +36,34 @@ public class PetFood {
 
     // Parameterized constructor
     public PetFood(long foodId, String name, String brand, String type, Integer quantity, Double price) {
+=======
+ 
+import jakarta.persistence.Entity;
+
+import jakarta.persistence.GeneratedValue;
+
+import jakarta.persistence.GenerationType;
+
+import jakarta.persistence.Id;
+
+import jakarta.persistence.Table;
+ 
+@Entity
+@Table(name ="pet_food")
+public class PetFood {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long foodId;
+    private String name;
+    private String brand;
+    private String type;
+    private int quantity;
+    private double price;
+    // Default constructor
+    public PetFood() {}
+    // Parameterized constructor
+    public PetFood(long foodId, String name, String brand, String type, int quantity, double price) {
+>>>>>>> origin/pets
         this.foodId = foodId;
         this.name = name;
         this.brand = brand;
@@ -42,16 +71,28 @@ public class PetFood {
         this.quantity = quantity;
         this.price = price;
     }
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> origin/pets
     // Getters and Setters
     public long getFoodId() {
         return foodId;
     }
+<<<<<<< HEAD
 
     public void setFoodId(long foodId) {
         this.foodId = foodId;
     }
 
+=======
+ 
+    public void setFoodId(long foodId) {
+        this.foodId = foodId;
+    }
+ 
+>>>>>>> origin/pets
     public String getName() {
         return name;
     }
@@ -59,7 +100,10 @@ public class PetFood {
     public void setName(String name) {
         this.name = name;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/pets
     public String getBrand() {
         return brand;
     }
@@ -71,6 +115,7 @@ public class PetFood {
     public String getType() {
         return type;
     }
+<<<<<<< HEAD
 
     public void setType(String type) {
         this.type = type;
@@ -92,6 +137,29 @@ public class PetFood {
         this.price = price;
     }
 
+=======
+ 
+    public void setType(String type) {
+        this.type = type;
+    }
+ 
+    public int getQuantity() {
+        return quantity;
+    }
+ 
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+ 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+ 
+>>>>>>> origin/pets
     @Override
     public String toString() {
         return "PetFood{" +
@@ -103,4 +171,9 @@ public class PetFood {
                 ", price=" + price +
                 '}';
     }
+<<<<<<< HEAD
 }
+=======
+}
+ 
+>>>>>>> origin/pets

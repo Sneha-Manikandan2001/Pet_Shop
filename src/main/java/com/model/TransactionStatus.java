@@ -1,6 +1,7 @@
 package com.model;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 public enum TransactionStatus {
     Success,
     Failed
@@ -12,3 +13,11 @@ public enum TransactionStatus{
 	Failed
 }
 >>>>>>> origin/customer
+=======
+public enum TransactionStatus {
+	
+	Success,
+	Failed
+
+}
+>>>>>>> origin/pets
