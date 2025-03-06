@@ -1,0 +1,30 @@
+package com.dto;
+
+import com.model.Address;
+import com.model.Customer;
+
+public class CustomerDTO {
+	
+	private Customer customer;
+	
+	private Address address;
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	
+	
+
+}
