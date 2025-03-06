@@ -9,9 +9,15 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.petshop</groupId>
+<<<<<<< HEAD
 	<artifactId>Sprint_Suppliers</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Sprint_Suppliers</name>
+=======
+	<artifactId>Sprint_Vaccination</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Sprint_Vaccination</name>
+>>>>>>> 7c658eaddfd3c70052f01ea92a0f5f9c0410aac1
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -34,10 +40,17 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+<<<<<<< HEAD
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+=======
+		<!--<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>-->
+>>>>>>> 7c658eaddfd3c70052f01ea92a0f5f9c0410aac1
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
@@ -57,6 +70,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<<<<<<< HEAD
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
@@ -72,6 +86,13 @@
 		<artifactId>jaxb-api</artifactId>
 		<version>2.3.1</version>
 		</dependency>
+=======
+		<!--<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>-->
+>>>>>>> 7c658eaddfd3c70052f01ea92a0f5f9c0410aac1
 	</dependencies>
 
 	<build>
