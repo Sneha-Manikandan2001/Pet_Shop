@@ -7,15 +7,25 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
  
 @Entity
+<<<<<<< HEAD
 
 @Table(name = "pet_categories")
 
 public class PetCategories {
+=======
+@Table(name = "pet_categories")
+public class PetCategories {
+ 
+>>>>>>> 0f2ae15546aee2d4e311a1639e0ebbe6050ecfa5
     @Id
     @GeneratedValue
     @Column(name = "category_id")
     private long categoryId;
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 0f2ae15546aee2d4e311a1639e0ebbe6050ecfa5
     @Column(name = "name")
     private String name;
  
@@ -47,7 +57,11 @@ public class PetCategories {
     public String toString() {
         return "PetCategory [categoryId=" + categoryId + ", name=" + name + "]";
     }
+<<<<<<< HEAD
 
 }
  
  
+=======
+}
+>>>>>>> 0f2ae15546aee2d4e311a1639e0ebbe6050ecfa5
