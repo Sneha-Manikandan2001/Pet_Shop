@@ -1,5 +1,11 @@
 package com.model;
+<<<<<<< HEAD
  
+=======
+
+
+
+>>>>>>> origin/customer
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -123,4 +129,8 @@ public class Pets {
         return "Pet [petId=" + petId + ", name=" + name + ", breed=" + breed + ", age=" + age + ", price=" + price + 
                ", category=" + category + ", description=" + description + ", imageUrl=" + imageUrl + "]";
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/customer
