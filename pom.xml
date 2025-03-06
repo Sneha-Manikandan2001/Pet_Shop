@@ -9,9 +9,15 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.petshop</groupId>
+<<<<<<< HEAD
 	<artifactId>Sprint_PetsCategory</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Sprint_PetsCategory</name>
+=======
+	<artifactId>Sprint_Employees</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Sprint_Employees</name>
+>>>>>>> origin/employees
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>

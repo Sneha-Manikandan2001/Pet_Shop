@@ -1,6 +1,7 @@
 package com.model;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  
 =======
 
@@ -70,10 +71,38 @@ public class Addresses {
     }
 
 	@Override
+=======
+ 
+ 
+import jakarta.persistence.Entity;
+
+import jakarta.persistence.GeneratedValue;
+
+import jakarta.persistence.GenerationType;
+
+import jakarta.persistence.Id;
+
+import jakarta.persistence.Table;
+ 
+@Entity
+
+@Table(name = "addresses")
+
+public class Addresses {
+ 
+    @Id
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    private Long addressId;
+ 
+    @Override
+>>>>>>> origin/employees
 	public String toString() {
 		return "Addresses [addressId=" + addressId + ", street=" + street + ", city=" + city + ", state=" + state
 				+ ", zipCode=" + zipCode + "]";
 	}
+<<<<<<< HEAD
 =======
 import jakarta.validation.constraints.NotEmpty;
 
@@ -178,6 +207,15 @@ public class Addresses {
 
     @NotEmpty
 
+=======
+
+	private String street;
+
+    private String city;
+
+    private String state;
+
+>>>>>>> origin/employees
     private String zipCode;
  
     // Getters and Setters
@@ -243,5 +281,9 @@ public class Addresses {
     }
 
 }
+<<<<<<< HEAD
  
 >>>>>>> origin/pets
+=======
+ 
+>>>>>>> origin/employees
