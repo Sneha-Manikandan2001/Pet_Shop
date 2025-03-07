@@ -1,12 +1,12 @@
 package com.model;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name="grooming_services")
@@ -16,26 +16,19 @@ public class GroomingServices {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long serviceId;
 
-    @Override
-	public String toString() {
-		return "GroomingServices [serviceId=" + serviceId + ", name=" + name + ", description=" + description
-				+ ", price=" + price + ", available=" + available + "]";
-	}
-
     @NotEmpty
-	private String name;
+    private String name;
 
     @NotEmpty
     private String description;
 
-    @NotEmpty
+    @NotNull
     private double price;
 
-    @NotEmpty
+    @NotNull
     private Boolean available = true;
 
     // Getters and Setters
-
     public Long getServiceId() {
         return serviceId;
     }
@@ -74,6 +67,12 @@ public class GroomingServices {
 
     public void setAvailable(Boolean available) {
         this.available = available;
+    }
+
+    @Override
+    public String toString() {
+        return "GroomingServices [serviceId=" + serviceId + ", name=" + name + ", description=" + description
+                + ", price=" + price + ", available=" + available + "]";
     }
 }
 

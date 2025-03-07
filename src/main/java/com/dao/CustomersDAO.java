@@ -18,7 +18,7 @@ public interface CustomersDAO extends JpaRepository<Customers, Long> {
     List<Customers> findByState(String state);
     
 //custom Query for finding customers with transactions
-    @Query("SELECT c FROM Customers c JOIN c.transactions t WHERE t.status = :status")
+    @Query("SELECT c FROM Customers c JOIN c.transactions t WHERE t.transactionStatus = :status")
     List<Customers> findCustomersByTransactionStatus(String status);
 
 //custom query for finding customers without transactions

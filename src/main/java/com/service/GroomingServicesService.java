@@ -2,10 +2,9 @@ package com.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.model.GroomingServices;
 import com.dao.GroomingServicesDAO;
-
+import com.exception.ResourceNotFoundException;
 import java.util.List;
 
 @Service
@@ -19,7 +18,7 @@ public class GroomingServicesService {
     }
 
     public GroomingServices getGroomingServiceById(Long serviceId) {
-        return groomingServicesDAO.findById(serviceId).orElse(null);
+        return groomingServicesDAO.findById(serviceId).orElseThrow(() -> new ResourceNotFoundException("Grooming service not found"));
     }
 
     public List<GroomingServices> getAvailableGroomingServices() {
@@ -36,13 +35,11 @@ public class GroomingServicesService {
 
     public GroomingServices updateGroomingService(Long serviceId, GroomingServices groomingServiceDetails) {
         GroomingServices groomingService = getGroomingServiceById(serviceId);
-        if (groomingService != null) {
-            groomingService.setName(groomingServiceDetails.getName());
-            groomingService.setDescription(groomingServiceDetails.getDescription());
-            groomingService.setPrice(groomingServiceDetails.getPrice());
-            groomingService.setAvailable(groomingServiceDetails.getAvailable());
-            return groomingServicesDAO.save(groomingService);
-        }
-        return null;
+        groomingService.setName(groomingServiceDetails.getName());
+        groomingService.setDescription(groomingServiceDetails.getDescription());
+        groomingService.setPrice(groomingServiceDetails.getPrice());
+        groomingService.setAvailable(groomingServiceDetails.getAvailable());
+        return groomingServicesDAO.save(groomingService);
     }
 }
+

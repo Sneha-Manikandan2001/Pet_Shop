@@ -1,12 +1,12 @@
 package com.controller;
 
+import com.exception.ResourceNotFoundException;
+import com.model.Employees;
+import com.service.EmployeesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import com.model.Employees;
-import com.service.EmployeesService;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -21,48 +21,48 @@ public class EmployeesController {
     private EmployeesService employeesService;
 
     @GetMapping
-    public ResponseEntity<List<Employees>> getAllEmployees() {
+    public List<Employees> getAllEmployees() {
         List<Employees> employees = employeesService.getAllEmployees();
         if (employees == null || employees.isEmpty()) {
-            throw new RuntimeException("No employees found");
+            throw new ResourceNotFoundException("No employees found");
         }
-        return ResponseEntity.ok(employees);
+        return employees;
     }
 
-    @GetMapping("/{employee_id}")
-    public ResponseEntity<Employees> getEmployeeById(@PathVariable Long employee_id) {
-        Employees employee = employeesService.getEmployeeById(employee_id);
+    @GetMapping("/{employeeId}")
+    public Employees getEmployeeById(@PathVariable Long employeeId) {
+        Employees employee = employeesService.getEmployeeById(employeeId);
         if (employee == null) {
-            throw new RuntimeException("Employee not found");
+            throw new ResourceNotFoundException("Employee not found");
         }
-        return ResponseEntity.ok(employee);
+        return employee;
     }
 
     @GetMapping("/firstname/{firstName}")
-    public ResponseEntity<List<Employees>> getEmployeesByFirstName(@PathVariable String firstName) {
+    public List<Employees> getEmployeesByFirstName(@PathVariable String firstName) {
         List<Employees> employees = employeesService.getEmployeesByFirstName(firstName);
         if (employees == null || employees.isEmpty()) {
-            throw new RuntimeException("No employees found with the given first name");
+            throw new ResourceNotFoundException("No employees found with the given first name");
         }
-        return ResponseEntity.ok(employees);
+        return employees;
     }
 
-    @GetMapping("/position/{position_name}")
-    public ResponseEntity<List<Employees>> getEmployeesByPosition(@PathVariable String position_name) {
-        List<Employees> employees = employeesService.getEmployeesByPosition(position_name);
+    @GetMapping("/position/{positionName}")
+    public List<Employees> getEmployeesByPosition(@PathVariable String positionName) {
+        List<Employees> employees = employeesService.getEmployeesByPosition(positionName);
         if (employees == null || employees.isEmpty()) {
-            throw new RuntimeException("No employees found with the given position");
+            throw new ResourceNotFoundException("No employees found with the given position");
         }
-        return ResponseEntity.ok(employees);
+        return employees;
     }
 
     @PostMapping("/add")
     public ResponseEntity<Map<String, Object>> addEmployee(@RequestBody Employees employee) {
         if (employee == null) {
-            throw new RuntimeException("Invalid employee data");
+            throw new RuntimeException("Invalid");
         }
         employeesService.addEmployee(employee);
-        
+
         Map<String, Object> response = new HashMap<>();
         response.put("timeStamp", new Date());
         response.put("message", "Employee added successfully");
@@ -70,13 +70,13 @@ public class EmployeesController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{employee_id}")
-    public ResponseEntity<Map<String, Object>> updateEmployee(@PathVariable Long employee_id, @RequestBody Employees employeeDetails) {
-        if (employeeDetails == null) {
-            throw new RuntimeException("Invalid employee data");
+    @PutMapping("/update/{employeeId}")
+    public ResponseEntity<Map<String, Object>> updateEmployee(@PathVariable Long employeeId, @RequestBody Employees employee) {
+        if (employee == null) {
+            throw new RuntimeException("Invalid");
         }
-        employeesService.updateEmployee(employee_id, employeeDetails);
-        
+        employeesService.updateEmployee(employeeId, employee);
+
         Map<String, Object> response = new HashMap<>();
         response.put("timeStamp", new Date());
         response.put("message", "Employee updated successfully");

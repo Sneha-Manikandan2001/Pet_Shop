@@ -1,55 +1,39 @@
 package com.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-
-import java.util.Date;
 
 @Entity
 public class Employees {
 
-    @Override
-	public String toString() {
-		return "Employees [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", position=" + position + ", hireDate=" + hireDate + ", phoneNumber=" + phoneNumber + ", email="
-				+ email + ", addresses=" + addresses + "]";
-	}
-
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long employeeId;
 
-	@NotEmpty
+    @NotEmpty
     private String firstName;
-	
-	@NotEmpty
+
+    @NotEmpty
     private String lastName;
-	
-	@NotEmpty
+
+    @NotEmpty
     private String position;
 
-	@NotEmpty
-    @Temporal(TemporalType.DATE)//Maps the field to a SQL DATE type, storing only the date part (year, month, day).
-    private Date hireDate;
-	
-	@NotEmpty
+    @NotEmpty
     private String phoneNumber;
 
-	@NotEmpty
+    @NotEmpty
     private String email;
-	
-	@NotEmpty
+
     @ManyToOne
+    @JoinColumn(name = "address_id")
     private Addresses addresses;
 
-    // Getters and Setters
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private RoleType role;
 
+    // Getters and Setters
     public Long getEmployeeId() {
         return employeeId;
     }
@@ -82,14 +66,6 @@ public class Employees {
         this.position = position;
     }
 
-    public Date getHireDate() {
-        return hireDate;
-    }
-
-    public void setHireDate(Date hireDate) {
-        this.hireDate = hireDate;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -110,7 +86,21 @@ public class Employees {
         return addresses;
     }
 
-    public void setAddresses(Addresses address) {
-        this.addresses = address;
+    public void setAddresses(Addresses addresses) {
+        this.addresses = addresses;
+    }
+
+    public RoleType getRole() {
+        return role;
+    }
+
+    public void setRole(RoleType role) {
+        this.role = role;
+    }
+
+    public enum RoleType {
+        ADMIN,
+        SUPPLIER,
+        CUSTOMER
     }
 }

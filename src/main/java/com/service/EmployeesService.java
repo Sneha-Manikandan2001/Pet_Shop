@@ -2,12 +2,10 @@ package com.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.model.Employees;
 import com.dao.EmployeesDAO;
-
+import com.exception.ResourceNotFoundException;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EmployeesService {
@@ -20,16 +18,15 @@ public class EmployeesService {
     }
 
     public Employees getEmployeeById(Long employeeId) {
-        Optional<Employees> employee = employeesDAO.findById(employeeId);
-        return employee.orElse(null);
+        return employeesDAO.findById(employeeId).orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
     }
 
     public List<Employees> getEmployeesByFirstName(String firstName) {
         return employeesDAO.findByFirstName(firstName);
     }
 
-    public List<Employees> getEmployeesByPosition(String positionName) {
-        return employeesDAO.findByPosition(positionName);
+    public List<Employees> getEmployeesByPosition(String position) {
+        return employeesDAO.findByPosition(position);
     }
 
     public Employees addEmployee(Employees employee) {
@@ -37,17 +34,13 @@ public class EmployeesService {
     }
 
     public Employees updateEmployee(Long employeeId, Employees employeeDetails) {
-        Employees employee = getEmployeeById(employeeId);
-        if (employee != null) {
-            employee.setFirstName(employeeDetails.getFirstName());
-            employee.setLastName(employeeDetails.getLastName());
-            employee.setPosition(employeeDetails.getPosition());
-            employee.setHireDate(employeeDetails.getHireDate());
-            employee.setPhoneNumber(employeeDetails.getPhoneNumber());
-            employee.setEmail(employeeDetails.getEmail());
-            employee.setAddresses(employeeDetails.getAddresses());
-            return employeesDAO.save(employee);
-        }
-        return null;
+        Employees existingEmployee = employeesDAO.findById(employeeId).orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
+        existingEmployee.setFirstName(employeeDetails.getFirstName());
+        existingEmployee.setLastName(employeeDetails.getLastName());
+        existingEmployee.setPosition(employeeDetails.getPosition());
+        existingEmployee.setPhoneNumber(employeeDetails.getPhoneNumber());
+        existingEmployee.setEmail(employeeDetails.getEmail());
+        existingEmployee.setAddresses(employeeDetails.getAddresses());
+        return employeesDAO.save(existingEmployee);
     }
 }
