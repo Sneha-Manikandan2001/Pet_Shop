@@ -57,7 +57,7 @@ public class UserControllerTest {
  
         verify(userService, times(1)).saveUser(user);
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        assertEquals("REGISTERSUCCESS", ((Map<String, String>) response.getBody()).get("status"));
+        assertEquals("Register Success", ((Map<String, String>) response.getBody()).get("status"));
     }
  
     @Test
@@ -70,7 +70,7 @@ public class UserControllerTest {
  
         verify(userService, times(1)).saveUser(user);
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        assertEquals("REGISTERSUCCESS", ((Map<String, String>) response.getBody()).get("status"));
+        assertEquals("Register Success", ((Map<String, String>) response.getBody()).get("status"));
     }
 }
  
