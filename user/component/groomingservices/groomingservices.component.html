@@ -1,0 +1,13 @@
+<div  class="card-container">
+    <div *ngIf="errorMessage">{{ errorMessage }} </div>
+    <ul style="list-style-type: none;">
+      <li *ngFor="let groomingService of groomingServices">
+        <div class="card">
+          <span><strong>Name:</strong> {{ groomingService.name }}</span><br>
+          <span><strong>Description:</strong> {{ groomingService.description }}</span><br>
+          <span><strong>Price:</strong> {{ groomingService.price }}</span><br>
+          <span><strong>Available:</strong> {{ groomingService.available ? 'Yes' : 'No' }}</span><br>
+        </div>
+      </li>
+    </ul>
+  </div>

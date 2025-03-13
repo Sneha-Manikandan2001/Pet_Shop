@@ -1,0 +1,12 @@
+    <div class="card-container">
+        <div *ngFor="let i of imageDetail; let index = index" class="card">
+            <img src={{i.imageUrl}} width={{i.width}} height={{i.height}} alt={{i.imageName}}/>
+            <div>
+                <h4>{{ filteredPetFoods[index].name }}</h4>
+                <p><strong>Brand:</strong> {{ filteredPetFoods[index].brand }}</p>
+                <p><strong>Type:</strong> {{ filteredPetFoods[index].type  }}</p>
+                <p><strong>Quantity:</strong> {{ filteredPetFoods[index].quantity }}</p> 
+                <p><strong>Price:</strong> {{ filteredPetFoods[index].price | currency: 'INR' }}</p>
+            </div>
+        </div>
+    </div>

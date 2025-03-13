@@ -1,0 +1,62 @@
+<div>
+    <h1>Pet Foods</h1>
+    <button (click)="toggleAddPetFoodForm()">Add Pet Food</button>
+  
+    <div *ngIf="showAddPetFoodForm">
+      <h2>Add New Pet Food</h2>
+      <form (ngSubmit)="addPetFood()">
+        <label>Name:</label>
+        <input [(ngModel)]="newPetFood.name" name="name" required>
+        <label>Brand:</label>
+        <input [(ngModel)]="newPetFood.brand" name="brand" required>
+        <label>Type:</label>
+        <input [(ngModel)]="newPetFood.type" name="type" required>
+        <label>Quantity:</label>
+        <input [(ngModel)]="newPetFood.quantity" name="quantity" required>
+        <label>Price:</label>
+        <input [(ngModel)]="newPetFood.price" name="price" required>
+        <button type="submit">Add Pet Food</button>
+      </form>
+    </div>
+  
+    <div *ngIf="errorMessage">{{ errorMessage }}</div>
+  
+    <div>
+      <label for="filterType">Filter By:</label>
+      <select id="filterType" [(ngModel)]="filterType" name="filterType" (change)="getPetFoods()">
+        <option value="getAll">All</option>
+        <option value="getById">ID</option>
+        <option value="getByName">Name</option>
+        <option value="getByType">Type</option>
+        <option value="getByBrand">Brand</option>
+      </select>
+      <input *ngIf="filterType !== 'getAll'" [(ngModel)]="filterValue" name="filterValue" placeholder="Enter value" (input)="getPetFoods()">
+    </div>
+  
+    <ul>
+      <li *ngFor="let petFood of petFoods; let i = index">
+        <div *ngIf="editPetFoodIndex !== i">
+          <span><strong>Name:</strong> {{ petFood.name }}</span><br>
+          <span><strong>Brand:</strong> {{ petFood.brand }}</span><br>
+          <span><strong>Type:</strong> {{ petFood.type }}</span><br>
+          <span><strong>Quantity:</strong> {{ petFood.quantity }}</span><br>
+          <span><strong>Price:</strong> {{ petFood.price }}</span><br>
+          <button (click)="editPetFood(i)">Edit</button>
+        </div>
+        <div *ngIf="editPetFoodIndex === i">
+          <label>Name:</label>
+          <input [(ngModel)]="petFood.name" name="name" required>
+          <label>Brand:</label>
+          <input [(ngModel)]="petFood.brand" name="brand" required>
+          <label>Type:</label>
+          <input [(ngModel)]="petFood.type" name="type" required>
+          <label>Quantity:</label>
+          <input [(ngModel)]="petFood.quantity" name="quantity" required>
+          <label>Price:</label>
+          <input [(ngModel)]="petFood.price" name="price" required>
+          <button (click)="savePetFood(i)">Save</button>
+          <button (click)="cancelEdit()">Cancel</button>
+        </div>
+      </li>
+    </ul>
+  </div>
