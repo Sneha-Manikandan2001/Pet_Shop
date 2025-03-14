@@ -1,0 +1,84 @@
+<div class="container">
+    <h1>Pet Management</h1>
+  
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- Add Pet Form -->
+    
+    <!-- Pet List -->
+    <div class="pet-list">
+      <div *ngFor="let pet of pets; let i = index" class="pet-item">
+        <div *ngIf="editPetIndex !== i">
+          <h2>{{ pet.name }}</h2>
+          <img src="data:image/jpg;base64,{{pet.image}}" alt="{{ pet.name }}" *ngIf="pet.image" />
+          <p>Breed: {{ pet.breed }}</p>
+          <p>Age: {{ pet.age }}</p>
+          <p>Price: {{ pet.price }}</p>
+          <p>Description: {{ pet.description }}</p>
+          <p>Category: {{ pet.category.categoryId }}</p>
+          
+          <h3>Grooming Services</h3>
+          <ul>
+            <li *ngFor="let service of pet.groomingRelationships">
+              {{ service.groomingService.name }} - {{ service.groomingService.description }} - {{ service.groomingService.price }}
+            </li>
+          </ul>
+          
+          <h3>Vaccinations</h3>
+          <ul>
+            <li *ngFor="let vaccination of pet.vaccinationRelationships">
+              {{ vaccination.vaccination.name }} - {{ vaccination.vaccination.description }} - {{ vaccination.vaccination.price }}
+            </li>
+          </ul>
+          
+          <h3>Food Info</h3>
+          <ul>
+            <li *ngFor="let food of pet.foodRelationships">
+              {{ food.food.name }} - {{ food.food.brand }} - {{ food.food.type }} - {{ food.food.price }}
+            </li>
+          </ul>
+          
+          <!-- Order Button -->
+          <button (click)="openOrderModal(pet)">Order</button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Order Modal -->
+    <div *ngIf="showOrderModal" class="order-modal">
+      <div class="modal-content">
+        <h2>Order Details</h2>
+        <img src="data:image/jpg;base64,{{selectedPet?.image}}" alt="{{ selectedPet?.name }}" class="small-image" *ngIf="selectedPet?.image" />
+        <p>Name: {{ selectedPet?.name }}</p>
+        <p>Breed: {{ selectedPet?.breed }}</p>
+        <p>Age: {{ selectedPet?.age }}</p>
+        <p>Price: {{ selectedPet?.price }}</p>
+        <p>Description: {{ selectedPet?.description }}</p>
+        
+        <button (click)="payForPet()">Pay</button>
+        <button (click)="cancelOrder()">Cancel</button>
+      </div>
+    </div>
+  
+    <!-- Order Received Pop-up -->
+    <div *ngIf="orderReceived" class="order-received-modal">
+      <div class="modal-content">
+        <h2>Order Received</h2>
+        <p>Your order has been successfully received!</p>
+        <button (click)="closePopUp()">Close</button>
+      </div>
+    </div>
+  
+    <!-- Order Cancelled Pop-up -->
+    <div *ngIf="orderCancelled" class="order-cancelled-modal">
+      <div class="modal-content">
+        <h2>Order Cancelled</h2>
+        <p>Your order has been cancelled.</p>
+        <button (click)="closePopUp()">Close</button>
+      </div>
+    </div>
+  </div>
+  

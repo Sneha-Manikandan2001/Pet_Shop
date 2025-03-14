@@ -1,0 +1,159 @@
+<p>pets works!</p>
+<div class="container">
+  <h1>Pet Management</h1>
+ 
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+ 
+  <!-- Filter Section -->
+  <div class="filter-section">
+    <label for="filterType">Filter By:</label>
+    <select id="filterType" [(ngModel)]="filterType" (change)="getPets()">
+      <option value="getAll">All</option>
+      <option value="getById">ID</option>
+      <option value="getByCategory">Category</option>
+    </select>
+    <input *ngIf="filterType !== 'getAll'" type="text" [(ngModel)]="filterValue" (input)="getPets()" placeholder="Enter value" />
+  </div>
+ 
+  <!-- Add Pet Form -->
+  <button (click)="toggleAddPetForm()">
+    {{ showAddPetForm ? 'Cancel' : 'Add New Pet' }}
+  </button>
+  <div *ngIf="showAddPetForm" class="add-pet-form">
+    <form [formGroup]="petForm" (submit)="addPet()">
+      <div>
+        <label for="name">Name:</label>
+        <input id="name" formControlName="name" />
+      </div>
+      <div>
+        <label for="breed">Breed:</label>
+        <input id="breed" formControlName="breed" />
+      </div>
+      <div>
+        <label for="age">Age:</label>
+        <input id="age" type="number" formControlName="age" />
+      </div>
+      <div>
+        <label for="price">Price:</label>
+        <input id="price" type="number" formControlName="price" />
+      </div>
+      <div>
+        <label for="description">Description:</label>
+        <textarea id="description" formControlName="description"></textarea>
+      </div>
+      <div>
+        <label for="category">Category:</label>
+        <input id="category" type="number" formControlName="category" />
+      </div>
+      <div>
+        <label for="image">Image:</label>
+        <input id="image" type="file" (change)="onFileSelected($event)" />
+      </div>
+      <button type="submit" [disabled]="petForm.invalid">Add Pet</button>
+    </form>
+  </div>
+ 
+  <!-- Pet List -->
+  <div class="pet-list">
+    <div *ngFor="let pet of pets; let i = index" class="pet-item">
+      <div *ngIf="editPetIndex !== i">
+        <h2>{{ pet.name }}</h2>
+        <img src="data:image/jpg;base64,{{pet.image}}" alt="{{ pet.name }}" *ngIf="pet.image" />
+        <p>Breed: {{ pet.breed }}</p>
+        <p>Age: {{ pet.age }}</p>
+        <p>Price: {{ pet.price }}</p>
+        <p>Description: {{ pet.description }}</p>
+        <p>Category: {{ pet.category.categoryId }}</p>
+        <button (click)="editPet(i)">Edit</button>
+        <button (click)="getGroomingServicesByPetId(pet.petId)">View Grooming Services</button>
+        <button (click)="getVaccinationsByPetId(pet.petId)">View Vaccinations</button>
+        <button (click)="getFoodInfoByPetId(pet.petId)">View Food Info</button>
+        <button (click)="getSuppliersByPetId(pet.petId)">View Suppliers</button>
+        <button (click)="getTransactionHistoryByPetId(pet.petId)">View Transaction History</button>
+      </div>
+      <div *ngIf="editPetIndex === i">
+        <form [formGroup]="petForm" (ngSubmit)="savePet(i)">
+          <div>
+            <label for="name">Name:</label>
+            <input id="name" formControlName="name" [(ngModel)]="pet.name" />
+          </div>
+          <div>
+            <label for="breed">Breed:</label>
+            <input id="breed" formControlName="breed" [(ngModel)]="pet.breed" />
+          </div>
+          <div>
+            <label for="age">Age:</label>
+            <input id="age" type="number" formControlName="age" [(ngModel)]="pet.age" />
+          </div>
+          <div>
+            <label for="price">Price:</label>
+            <input id="price" type="number" formControlName="price" [(ngModel)]="pet.price" />
+          </div>
+          <div>
+            <label for="description">Description:</label>
+            <textarea id="description" formControlName="description" [(ngModel)]="pet.description"></textarea>
+          </div>
+          <div>
+            <label for="category">Category:</label>
+            <input id="category" formControlName="category" [(ngModel)]="pet.category.categoryId" />
+          </div>
+          <button type="submit" [disabled]="petForm.invalid">Save</button>
+          <button type="button" (click)="cancelEdit()">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Grooming Services List -->
+  <div *ngIf="groomingServices.length > 0">
+    <h3>Grooming Services</h3>
+    <ul>
+      <li *ngFor="let service of groomingServices">
+        {{ service.groomingService.name }} - {{ service.groomingService.description }} - {{ service.groomingService.price }}
+      </li>
+    </ul>
+  </div>
+ 
+  <!-- Vaccinations List -->
+  <div *ngIf="vaccinations.length > 0">
+    <h3>Vaccinations</h3>
+    <ul>
+      <li *ngFor="let vaccination of vaccinations">
+        {{ vaccination.vaccination.name }} - {{ vaccination.vaccination.description }} - {{ vaccination.vaccination.price }}
+      </li>
+    </ul>
+  </div>
+ 
+  <!-- Food Info List -->
+  <div *ngIf="foodInfo.length > 0">
+    <h3>Food Info</h3>
+    <ul>
+      <li *ngFor="let food of foodInfo">
+        {{ food.food.name }} - {{ food.food.brand }} - {{ food.food.type }} - {{ food.food.price }}
+      </li>
+    </ul>
+  </div>
+ 
+  <!-- Suppliers List -->
+  <div *ngIf="suppliers.length > 0">
+    <h3>Suppliers</h3>
+    <ul>
+      <li *ngFor="let supplier of suppliers">
+        {{ supplier.supplier.name }} - {{ supplier.supplier.contactPerson }} - {{ supplier.supplier.phoneNumber }}
+      </li>
+    </ul>
+  </div>
+ 
+  <!-- Transaction History List -->
+  <div *ngIf="transactionHistory.length > 0">
+    <h3>Transaction History</h3>
+    <ul>
+      <li *ngFor="let transaction of transactionHistory">
+        {{ transaction.transactionDate }} - {{ transaction.amount }} - {{ transaction.transactionStatus }}
+      </li>
+    </ul>
+  </div>
+</div>

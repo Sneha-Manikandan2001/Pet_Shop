@@ -1,0 +1,77 @@
+<div>
+    <h1>Suppliers</h1>
+    <button (click)="toggleAddSupplierForm()">Add Supplier</button>
+  
+    <div *ngIf="showAddSupplierForm">
+      <h2>Add New Supplier</h2>
+      <form (ngSubmit)="addSupplier()">
+        <label>Name:</label>
+        <input [(ngModel)]="newSupplier.name" name="name" required>
+        <label>Contact Person:</label>
+        <input [(ngModel)]="newSupplier.contactPerson" name="contactPerson" required>
+        <label>Phone Number:</label>
+        <input [(ngModel)]="newSupplier.phoneNumber" name="phoneNumber" required>
+        <label>Email:</label>
+        <input [(ngModel)]="newSupplier.email" name="email" required>
+        <label>AddressId</label>
+        <input [(ngModel)]="newAddress.addressId" name="addressId" required>
+        <!-- <label>Street:</label>
+        <input [(ngModel)]="newAddress.street" name="street" required>
+        <label>City:</label>
+        <input [(ngModel)]="newAddress.city" name="city" required>
+        <label>State:</label>
+        <input [(ngModel)]="newAddress.state" name="state" required>
+        <label>Zip Code:</label>
+        <input [(ngModel)]="newAddress.zipCode" name="zipCode" required> -->
+        <button type="submit">Add Supplier</button>
+      </form>
+    </div>
+  
+    <div *ngIf="errorMessage">{{ errorMessage }}</div>
+  
+    <div>
+      <label for="filterType">Filter By:</label>
+      <select id="filterType" [(ngModel)]="filterType" name="filterType" (change)="getSuppliers()">
+        <option value="getAll">All</option>
+        <option value="getById">ID</option>
+        <option value="getByName">Name</option>
+        <option value="getByCity">City</option>
+        <option value="getByState">State</option>
+      </select>
+      <input *ngIf="filterType !== 'getAll'" [(ngModel)]="filterValue" name="filterValue" placeholder="Enter value" (input)="getSuppliers()">
+    </div>
+  
+    <ul>
+      <li *ngFor="let supplier of suppliers; let i = index">
+        <div *ngIf="editSupplierIndex !== i">
+          <span><strong>Name:</strong> {{ supplier.name }}</span><br>
+          <span><strong>Contact Person:</strong> {{ supplier.contactPerson }}</span><br>
+          <span><strong>Phone Number:</strong> {{ supplier.phoneNumber }}</span><br>
+          <span><strong>Email:</strong> {{ supplier.email }}</span><br>
+          <span><strong>Address:</strong></span><br>
+          <span>{{ supplier.address.street }}, {{ supplier.address.city }}, {{ supplier.address.state }} - {{ supplier.address.zipCode }}</span><br>
+          <button (click)="editSupplier(i)">Edit</button>
+        </div>
+        <div *ngIf="editSupplierIndex === i">
+          <label>Name:</label>
+          <input [(ngModel)]="supplier.name" name="name" required>
+          <label>Contact Person:</label>
+          <input [(ngModel)]="supplier.contactPerson" name="contactPerson" required>
+          <label>Phone Number:</label>
+          <input [(ngModel)]="supplier.phoneNumber" name="phoneNumber" required>
+          <label>Email:</label>
+          <input [(ngModel)]="supplier.email" name="email" required>
+          <label>Street:</label>
+          <input [(ngModel)]="supplier.address.street" name="street" required>
+          <label>City:</label>
+          <input [(ngModel)]="supplier.address.city" name="city" required>
+          <label>State:</label>
+          <input [(ngModel)]="supplier.address.state" name="state" required>
+          <label>Zip Code:</label>
+          <input [(ngModel)]="supplier.address.zipCode" name="zipCode" required>
+          <button (click)="saveSupplier(i)">Save</button>
+          <button (click)="cancelEdit()">Cancel</button>
+        </div>
+      </li>
+    </ul>
+  </div>

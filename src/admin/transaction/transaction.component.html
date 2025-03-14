@@ -1,0 +1,70 @@
+<div>
+    <h1>Transactions</h1>
+    <button (click)="toggleAddTransactionForm()">Add Transaction</button>
+ 
+    <div *ngIf="showAddTransactionForm">
+      <h2>Add New Transaction</h2>
+      <form (ngSubmit)="addTransaction()">
+        <label>Customer ID:</label>
+        <input [(ngModel)]="newTransaction.customerId" name="customerId" required>
+        <label>Pet ID:</label>
+        <input [(ngModel)]="newTransaction.petId" name="petId" required>
+        <label>Transaction Date:</label>
+        <input [(ngModel)]="newTransaction.transactionDate" name="transactionDate" type="date" required>
+        <label>Amount:</label>
+        <input [(ngModel)]="newTransaction.amount" name="amount" required>
+        <label>Status:</label>
+        <select [(ngModel)]="newTransaction.transactionStatus" name="transactionStatus" required>
+          <option value="Success">Success</option>
+          <option value="Failed">Failed</option>
+        </select>
+        <button type="submit">Add Transaction</button>
+      </form>
+    </div>
+ 
+    <div *ngIf="errorMessage">{{ errorMessage }}</div>
+ 
+    <div>
+      <label for="filterType">Filter By:</label>
+      <select id="filterType" [(ngModel)]="filterType" name="filterType" (change)="getTransactions()">
+        <option value="getAll">All</option>
+        <option value="getById">ID</option>
+        <option value="getByCustomerId">Customer ID</option>
+        <option value="getSuccessful">Successful</option>
+        <option value="getFailed">Failed</option>
+      </select>
+      <input *ngIf="filterType !== 'getAll'" [(ngModel)]="filterValue" name="filterValue" placeholder="Enter value" (input)="getTransactions()">
+    </div>
+ 
+    <ul>
+      <li *ngFor="let transaction of transactions; let i = index">
+        <div *ngIf="editTransactionIndex !== i">
+          <span><strong>Transaction ID:</strong> {{ transaction.transactionId }}</span><br>
+          <!-- <span><strong>Customer ID:</strong> {{ transaction.customerId }}</span><br>
+          <span><strong>Pet ID:</strong> {{ transaction.petId }}</span><br> -->
+          <span><strong>Transaction Date:</strong> {{ transaction.transactionDate | date }}</span><br>
+          <span><strong>Amount:</strong> {{ transaction.amount }}</span><br>
+          <span><strong>Status:</strong> {{ transaction.transactionStatus }}</span><br>
+          <button (click)="editTransaction(i)">Edit</button>
+        </div>
+        <div *ngIf="editTransactionIndex === i">
+          <label>Customer ID:</label>
+          <input [(ngModel)]="transaction.customerId" name="customerId" required>
+          <label>Pet ID:</label>
+          <input [(ngModel)]="transaction.petId" name="petId" required>
+          <label>Transaction Date:</label>
+          <input [(ngModel)]="transaction.transactionDate" name="transactionDate" type="date" required>
+          <label>Amount:</label>
+          <input [(ngModel)]="transaction.amount" name="amount" required>
+          <label>Status:</label>
+          <select [(ngModel)]="transaction.transactionStatus" name="transactionStatus" required>
+            <option value="Success">Success</option>
+            <option value="Failed">Failed</option>
+          </select>
+          <button (click)="saveTransaction(i)">Save</button>
+          <button (click)="cancelEdit()">Cancel</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+ 

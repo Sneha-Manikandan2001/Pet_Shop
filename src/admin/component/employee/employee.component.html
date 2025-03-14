@@ -1,0 +1,94 @@
+<div>
+  <h1>Employees</h1>
+  <button (click)="toggleAddEmployeeForm()">Add Employee</button>
+
+  <div *ngIf="showAddEmployeeForm">
+    <h2>Add New Employee</h2>
+    <form (ngSubmit)="addEmployee()">
+      <label>First Name:</label>
+      <input [(ngModel)]="newEmployee.firstName" name="firstName" required>
+      <label>Last Name:</label>
+      <input [(ngModel)]="newEmployee.lastName" name="lastName" required>
+      <label>Position:</label>
+      <input [(ngModel)]="newEmployee.position" name="position" required>
+      <label>Phone Number:</label>
+      <input [(ngModel)]="newEmployee.phoneNumber" name="phoneNumber" required>
+      <label>Email:</label>
+      <input [(ngModel)]="newEmployee.email" name="email" required>
+      <label>Hire Date:</label>
+      <input [(ngModel)]="newEmployee.hireDate" name="hireDate" type="date" required>
+      <label>Address ID:</label>
+      <input [(ngModel)]="newAddress.addressId" name="addressId" required>
+      <label>Role:</label>
+      <select [(ngModel)]="newEmployee.role" name="role" required>
+        <option value="ADMIN">ADMIN</option>
+        <option value="SUPPLIER">SUPPLIER</option>
+        <option value="CUSTOMERS">CUSTOMERS</option>
+      </select>
+      <button type="submit">Add Employee</button>
+    </form>
+  </div>
+
+  <div *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <div>
+    <label for="filterType">Filter By:</label>
+    <select id="filterType" [(ngModel)]="filterType" name="filterType" (change)="getEmployees()">
+      <option value="getAll">All</option>
+      <option value="getById">ID</option>
+      <option value="getByFirstName">First Name</option>
+      <option value="getByPosition">Position</option>
+    </select>
+    <input *ngIf="filterType !== 'getAll'" [(ngModel)]="filterValue" name="filterValue" placeholder="Enter value" (input)="getEmployees()">
+  </div>
+
+  <ul>
+    <li *ngFor="let employee of employees; let i = index">
+      <div *ngIf="editEmployeeIndex !== i">
+        <span><strong>First Name:</strong> {{ employee.firstName }}</span><br>
+        <span><strong>Last Name:</strong> {{ employee.lastName }}</span><br>
+        <span><strong>Position:</strong> {{ employee.position }}</span><br>
+        <span><strong>Phone Number:</strong> {{ employee.phoneNumber }}</span><br>
+        <span><strong>Email:</strong> {{ employee.email }}</span><br>
+        <span><strong>Hire Date:</strong> {{ employee.hireDate | date }}</span><br>
+        <span><strong>Address:</strong></span><br>
+        <span>{{ employee.addresses.street}}</span>, 
+        <span>{{ employee.addresses.city}}</span>, 
+        <span>{{ employee.addresses.state}}</span> - 
+        <span>{{ employee.addresses.zipCode}}</span><br>
+        <span><strong>Role:</strong> {{ employee.role }}</span><br>
+        <button (click)="editEmployee(i)">Edit</button>
+      </div>
+      <div *ngIf="editEmployeeIndex === i">
+        <label>First Name:</label>
+        <input [(ngModel)]="employee.firstName" name="firstName" required>
+        <label>Last Name:</label>
+        <input [(ngModel)]="employee.lastName" name="lastName" required>
+        <label>Position:</label>
+        <input [(ngModel)]="employee.position" name="position" required>
+        <label>Phone Number:</label>
+        <input [(ngModel)]="employee.phoneNumber" name="phoneNumber" required>
+        <label>Email:</label>
+        <input [(ngModel)]="employee.email" name="email" required>
+        <label>Hire Date:</label>
+        <input [(ngModel)]="employee.hireDate" name="hireDate" type="date" required>
+        <label>Street:</label>
+        <input [(ngModel)]="employee.address.street" name="street" required>
+        <label>City:</label>
+        <input [(ngModel)]="employee.address.city" name="city" required>
+        <label>State:</label>
+        <input [(ngModel)]="employee.address.state" name="state" required>
+        <label>Zip Code:</label>
+        <input [(ngModel)]="employee.address.zipCode" name="zipCode" required>
+        <label>Role:</label>
+        <select [(ngModel)]="employee.role" name="role" required>
+          <option value="ADMIN">ADMIN</option>
+          <option value="SUPPLIER">SUPPLIER</option>
+          <option value="CUSTOMERS">CUSTOMERS</option>
+        </select>
+        <button (click)="saveEmployee(i)">Save</button>
+        <button (click)="cancelEdit()">Cancel</button>
+      </div>
+    </li>
+  </ul>
+</div>

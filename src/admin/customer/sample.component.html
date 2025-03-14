@@ -1,0 +1,102 @@
+<div>
+    <h1>Customers</h1>
+    <button (click)="toggleAddCustomerForm()">Add Customer</button>
+   
+    <div *ngIf="showAddCustomerForm">
+      <h2>Add New Customer</h2>
+      <form (ngSubmit)="addCustomer()">
+        <label>Customer ID:</label>
+        <input [(ngModel)]="newCustomer.customerId" name="customerId" required>
+        <label>First Name:</label>
+        <input [(ngModel)]="newCustomer.firstName" name="firstName" required>
+        <label>Last Name:</label>
+        <input [(ngModel)]="newCustomer.lastName" name="lastName" required>
+        <label>Email:</label>
+        <input [(ngModel)]="newCustomer.email" name="email" required>
+        <label>Phone Number:</label>
+        <input [(ngModel)]="newCustomer.phoneNumber" name="phoneNumber" required>
+        <label>Street:</label>
+        <input [(ngModel)]="newAddress.street" name="street" required>
+        <label>City:</label>
+        <input [(ngModel)]="newAddress.city" name="city" required>
+        <label>State:</label>
+        <input [(ngModel)]="newAddress.state" name="state" required>
+        <label>Zip Code:</label>
+        <input [(ngModel)]="newAddress.zipCode" name="zipCode" required>
+        <button type="submit">Add Customer</button>
+      </form>
+    </div>
+   
+    <div *ngIf="errorMessage">{{ errorMessage }}</div>
+   
+    <div>
+      <label for="filterType">Filter By:</label>
+      <select id="filterType" [(ngModel)]="filterType" name="filterType" (change)="getCustomers()">
+        <option value="getAll">All</option>
+        <option value="getById">ID</option>
+        <option value="getByName">Name</option>
+        <option value="getByCity">City</option>
+        <option value="getByState">State</option>
+        
+        <option value="getCustomersByTransactionStatus">Transaction Status</option>
+       
+      </select>
+      <div *ngIf="filterType === 'getByName'">
+        <input [(ngModel)]="filterFirstName" name="filterFirstName" placeholder="Enter first name" (input)="getCustomers()">
+        <input [(ngModel)]="filterLastName" name="filterLastName" placeholder="Enter last name" (input)="getCustomers()">
+      </div>
+      <input *ngIf="filterType !== 'getByName' && filterType !== 'getAll'" [(ngModel)]="filterValue" name="filterValue" placeholder="Enter value" (input)="getCustomers()">
+    </div>
+    <!-- <button type="submit">save</button> -->
+    <button (click)="getCustomers()">check</button>
+   
+    <ul>
+      <li *ngFor="let customer of customers; let i = index">
+        <div *ngIf="editCustomerIndex !== i">
+          <span><strong>Customer ID:</strong> {{ customer.customerId }}</span><br>
+          <span><strong>First Name:</strong> {{ customer.firstName }}</span><br>
+          <span><strong>Last Name:</strong> {{ customer.lastName }}</span><br>
+          <span><strong>Email:</strong> {{ customer.email }}</span><br>
+          <span><strong>Phone Number:</strong> {{ customer.phoneNumber }}</span><br>
+          <span><strong>Address:</strong></span><br>
+          <span>{{ customer.address.street }}, {{ customer.address.city }}, {{ customer.address.state }} - {{ customer.address.zipCode }}</span><br>
+         
+          <button (click)="editCustomer(i)">Edit</button>
+        </div>
+        <div *ngIf="editCustomerIndex === i">
+          <label>Customer ID:</label>
+          <input [(ngModel)]="customer.customerId" name="customerId" required>
+          <label>First Name:</label>
+          <input [(ngModel)]="customer.firstName" name="firstName" required>
+          <label>Last Name:</label>
+          <input [(ngModel)]="customer.lastName" name="lastName" required>
+          <label>Email:</label>
+          <input [(ngModel)]="customer.email" name="email" required>
+          <label>Phone Number:</label>
+          <input [(ngModel)]="customer.phoneNumber" name="phoneNumber" required>
+          <label>Street:</label>
+          <input [(ngModel)]="customer.address.street" name="street" required>
+          <label>City:</label>
+          <input [(ngModel)]="customer.address.city" name="city" required>
+          <label>State:</label>
+          <input [(ngModel)]="customer.address.state" name="state" required>
+          <label>Zip Code:</label>
+          <input [(ngModel)]="customer.address.zipCode" name="zipCode" required>
+          <label>Transactions:</label>
+          <ul>
+            <li *ngFor="let transaction of customer.transactions">
+              <label>Amount:</label>
+              <input [(ngModel)]="transaction.amount" name="amount" required>
+              <label>Date:</label>
+              <input [(ngModel)]="transaction.transactionDate" name="transactionDate" required>
+              <label>Status:</label>
+              <input [(ngModel)]="transaction.transactionStatus" name="transactionStatus" required>
+            </li>
+          </ul>
+          <button (click)="saveCustomer(i)">Save</button>
+          <button (click)="cancelEdit()">Cancel</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+   

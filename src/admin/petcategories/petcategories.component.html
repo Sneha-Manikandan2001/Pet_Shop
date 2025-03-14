@@ -1,0 +1,40 @@
+<div>
+    <h1>Pet Categories</h1>
+    <button (click)="toggleAddCategoryForm()">Add Category</button>
+  
+    <div *ngIf="showAddCategoryForm">
+      <h2>Add New Category</h2>
+      <form (ngSubmit)="addCategory()">
+        <label>Name:</label>
+        <input [(ngModel)]="newCategory.name" name="name" required>
+        <button type="submit">Add Category</button>
+      </form>
+    </div>
+  
+    <div *ngIf="errorMessage">{{ errorMessage }}</div>
+  
+    <div>
+      <label for="filterType">Filter By:</label>
+      <select id="filterType" [(ngModel)]="filterType" name="filterType" (change)="getCategories()">
+        <option value="getAll">All</option>
+        <option value="getById">ID</option>
+        <option value="getByName">Name</option>
+      </select>
+      <input *ngIf="filterType !== 'getAll'" [(ngModel)]="filterValue" name="filterValue" placeholder="Enter value" (input)="getCategories()">
+    </div>
+  
+    <ul>
+      <li *ngFor="let category of categories; let i = index">
+        <div *ngIf="editCategoryIndex !== i">
+          <span><strong>Name:</strong> {{ category.name }}</span><br>
+          <button (click)="editCategory(i)">Edit</button>
+        </div>
+        <div *ngIf="editCategoryIndex === i">
+          <label>Name:</label>
+          <input [(ngModel)]="category.name" name="name" required>
+          <button (click)="saveCategory(i)">Save</button>
+          <button (click)="cancelEdit()">Cancel</button>
+        </div>
+      </li>
+    </ul>
+  </div>

@@ -1,0 +1,52 @@
+<div>
+    <h1>Vaccinations</h1>
+    <button (click)="toggleAddVaccinationForm()">Add Vaccination</button>
+  
+    <div *ngIf="showAddVaccinationForm">
+      <h2>Add New Vaccination</h2>
+      <form (ngSubmit)="addVaccination()">
+        <label>Name:</label>
+        <input [(ngModel)]="newVaccination.name" name="name" required>
+        <label>Description:</label>
+        <input [(ngModel)]="newVaccination.description" name="description" required>
+        <label>Price:</label>
+        <input [(ngModel)]="newVaccination.price" name="price" required>
+        <button type="submit">Add Vaccination</button>
+      </form>
+    </div>
+  
+    <div *ngIf="errorMessage">{{ errorMessage }}</div>
+  
+    <div>
+      <label for="filterType">Filter By:</label>
+      <select id="filterType" [(ngModel)]="filterType" name="filterType" (change)="getVaccinations()">
+        <option value="getAll">All</option>
+        <option value="getById">ID</option>
+        <option value="getAvailable">Available</option>
+        <option value="getUnavailable">Unavailable</option>
+      </select>
+      <input *ngIf="filterType !== 'getAll'" [(ngModel)]="filterValue" name="filterValue" placeholder="Enter value" (input)="getVaccinations()">
+    </div>
+  
+    <ul>
+      <li *ngFor="let vaccination of vaccinations; let i = index">
+        <div *ngIf="editVaccinationIndex !== i">
+          <span><strong>Name:</strong> {{ vaccination.name }}</span><br>
+          <span><strong>Description:</strong> {{ vaccination.description }}</span><br>
+          <span><strong>Price:</strong> {{ vaccination.price }}</span><br>
+          <button (click)="editVaccination(i)">Edit</button>
+        </div>
+        <div *ngIf="editVaccinationIndex === i">
+          <label>Name:</label>
+          <input [(ngModel)]="vaccination.name" name="name" required>
+          <label>Description:</label>
+          <input [(ngModel)]="vaccination.description" name="description" required>
+          <label>Price:</label>
+          <input [(ngModel)]="vaccination.price" name="price" required>
+          <button (click)="saveVaccination(i)">Save</button>
+          <button (click)="cancelEdit()">Cancel</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
