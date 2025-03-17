@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AuthenticationService } from '../services/auth-services.service';
 import { User } from '../../models/User';
 import { FormsModule } from '@angular/forms';
 import {CommonModule} from "@angular/common";
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-user-login',
@@ -45,6 +46,5 @@ username: any;
       
 
   }
-
-  
+ 
 }

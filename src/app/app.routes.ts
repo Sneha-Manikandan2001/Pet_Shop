@@ -26,8 +26,7 @@ export const routes: Routes = [
     {path: 'admin-login', component: AdminLoginComponent},    
     {path:'user-register',component:UserRegisterComponent},
 
-    {path:'admin-dashboard',component:AdmindashboardComponent},
-    {path: 'employees',component:EmployeesComponent},
+    {path:'admin-dashboard',component:AdmindashboardComponent,children:[{path: 'employees',component:EmployeesComponent},
     {path: 'groomingservices',component:GroomingServicesComponent},
     {path: 'vaccinations',component:VaccinationsComponent},
     {path: 'petfood',component:PetFoodComponent},
@@ -36,14 +35,16 @@ export const routes: Routes = [
     {path: 'suppliers',component:SupplierComponent},
     {path: 'transactions',component:TransactionComponent},
     {path: 'customers', component:CustomersComponent},
-    {path: 'pets',component:PetsComponent},
+    {path: 'pets',component:PetsComponent}]},
+    
 
-
-    {path: 'ugroomingservices',component:UGroomingServicesComponent},
-    {path: 'upet-foods',component:UPetfoodComponent},
-    {path: 'uvaccinations',component:UVaccinationsComponent},
-    {path:'',component:UserdashboardComponent},
-    {path:'upets',component:UPetsComponent}
+    {path:'',component:UserdashboardComponent,children:[
+        {path: 'ugroomingservices',component:UGroomingServicesComponent},
+        {path: 'upet-foods',component:UPetfoodComponent},
+        {path: 'uvaccinations',component:UVaccinationsComponent},
+        {path:'upets',component:UPetsComponent}
+    ]}
+    
     
 ];
  

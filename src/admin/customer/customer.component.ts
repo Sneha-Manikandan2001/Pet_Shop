@@ -55,7 +55,7 @@ export class CustomersComponent implements OnInit {
           },
           (error: any) => {
             console.error('Error fetching customers:', error);
-            this.errorMessage = 'Failed to load customers. Please try again later.';
+           // this.errorMessage = 'Failed to load customers. Please try again later.';
           }
         );
         break;
@@ -69,10 +69,10 @@ export class CustomersComponent implements OnInit {
           (error: HttpErrorResponse) => {
             if (error.status === 404) {
               console.error('Customer not found:', error);
-              this.errorMessage = 'Customer not found. Please check the ID and try again.';
+            //  this.errorMessage = 'Customer not found. Please check the ID and try again.';
             } else {
               console.error('Error fetching customer by ID:', error);
-              this.errorMessage = 'Failed to load customer. Please try again later.';
+              //this.errorMessage = 'Failed to load customer. Please try again later.';
             }
           }
         );
@@ -88,7 +88,7 @@ export class CustomersComponent implements OnInit {
           },
           (error: any) => {
             console.error('Error fetching customers by name:', error);
-            this.errorMessage = 'Failed to load customers. Please try again later.';
+           // this.errorMessage = 'Failed to load customers. Please try again later.';
           }
         );
         break;
@@ -99,7 +99,7 @@ export class CustomersComponent implements OnInit {
           },
           (error: any) => {
             console.error('Error fetching customers by city:', error);
-            this.errorMessage = 'Failed to load customers. Please try again later.';
+           // this.errorMessage = 'Failed to load customers. Please try again later.';
           }
         );
         break;
@@ -110,7 +110,7 @@ export class CustomersComponent implements OnInit {
           },
           (error: any) => {
             console.error('Error fetching customers by state:', error);
-            this.errorMessage = 'Failed to load customers. Please try again later.';
+           // this.errorMessage = 'Failed to load customers. Please try again later.';
           }
         );
         break;
@@ -142,7 +142,7 @@ export class CustomersComponent implements OnInit {
           },
           (error: any) => {
             console.error('Error fetching customers by transaction status:', error);
-            this.errorMessage = 'Failed to load customers. Please try again later.';
+            //this.errorMessage = 'Failed to load customers. Please try again later.';
           }
         );
         break;

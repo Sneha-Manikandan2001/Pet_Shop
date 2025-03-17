@@ -90,61 +90,61 @@ export class UPetfoodComponent {
     );
   }
   imageDetail:ImageDetails[]=[{
-    imageUrl:"assets/i1.jpg",
+    imageUrl:"assets/petfood/p8.jpg",
     imageName:"Premium Cat Food",
     width:"300",
     height:"300"
   },
   {
-    imageUrl:"assets/i2.jpg",
+    imageUrl:"assets/petfood/p6.jpg",
     imageName:"Healthy Dog Bites",
     width:"300",
     height:"300"
   },
   {
-    imageUrl:"assets/i3.jpg",
+    imageUrl:"assets/petfood/p5.jpg",
     imageName:"Organic Rabbit Pellets",
     width:"300",
     height:"300"
   },
   {
-    imageUrl:"assets/i4.jpg",
+    imageUrl:"assets/petfood/p4.jpg",
     imageName:"Natural Fish Treats",
     width:"300",
     height:"300"
   },
   {
-    imageUrl:"assets/i5.jpg",
+    imageUrl:"assets/petfood/p11.jpg",
     imageName:"Grain-Free Puppy Chow",
     width:"300",
     height:"300"
   },
   {
-    imageUrl:"assets/i6.jpg",
+    imageUrl:"assets/petfood/p2.jpg",
     imageName:"Fresh Chicken Delight",
     width:"300",
     height:"300"
   },
   {
-    imageUrl:"assets/i7.jpg",
+    imageUrl:"assets/petfood/p7.jpg",
     imageName:"Shell Care",
     width:"300",
     height:"300"
   },
   {
-    imageUrl:"assets/i8.jpg",
+    imageUrl:"assets/petfood/p12.jpg",
     imageName:"Tweet Treats",
     width:"300",
     height:"300"
   },
   {
-    imageUrl:"assets/i9.jpg",
+    imageUrl:"assets/petfood/p9.jpg",
     imageName:"Hoof & Horn",
     width:"300",
     height:"300"
   },
   {
-    imageUrl:"assets/i10.jpg",
+    imageUrl:"assets/petfood/p10.jpg",
     imageName:"Soft Lamb Bites",
     width:"300",
     height:"300"

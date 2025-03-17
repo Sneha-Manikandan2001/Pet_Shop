@@ -1,12 +1,13 @@
 <main>
-   <!-- <div *ngIf="errorMessage">{{ errorMessage }} </div> -->
-      <div *ngFor="let groomingService of groomingServices" class="card">
-        <div class="card-content">
-          <h2>{{ groomingService.name }}</h2>
-          <p><strong>Description:</strong> {{ groomingService.description }}<br/>
-          <strong>Price:</strong> {{ groomingService.price }}<br/>
-          <strong>Available:</strong> {{ groomingService.available ? 'Yes' : 'No' }}</p><br/>
-          </div>
-    </div>
-  
-  </main>
+  <div *ngIf="errorMessage">{{ errorMessage }} </div>
+  <div *ngFor="let i of imageDetail; let index = index" class="card">
+    <img src={{i.imageUrl}} width={{i.width}} height={{i.height}} alt={{i.imageName}}/> 
+      <div class="info">
+        <h2>{{ groomingServices[index].name }}</h2>
+        <p><strong>Description:</strong> {{ groomingServices[index].description }}<br/>
+        <strong>Price:</strong> {{ groomingServices[index].price }}<br/>
+        <strong>Available:</strong> {{ groomingServices[index].available ? 'Yes' : 'No' }}</p><br/>
+        </div>
+  </div>
+
+</main>

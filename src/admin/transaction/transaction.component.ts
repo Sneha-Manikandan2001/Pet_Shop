@@ -36,7 +36,7 @@ export class TransactionComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching transactions:', error);
-            this.errorMessage = 'Failed to load transactions. Please try again later.';
+            //this.errorMessage = 'Failed to load transactions. Please try again later.';
           }
         );
         break;
@@ -47,7 +47,7 @@ export class TransactionComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching transaction by ID:', error);
-            this.errorMessage = 'Failed to load transaction. Please try again later.';
+            //this.errorMessage = 'Failed to load transaction. Please try again later.';
           }
         );
         break;
@@ -59,7 +59,7 @@ export class TransactionComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching transactions by customer ID:', error);
-            this.errorMessage = 'Failed to load transactions. Please try again later.';
+            //this.errorMessage = 'Failed to load transactions. Please try again later.';
           }
         );
         break;
@@ -70,7 +70,7 @@ export class TransactionComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching successful transactions:', error);
-            this.errorMessage = 'Failed to load transactions. Please try again later.';
+            //this.errorMessage = 'Failed to load transactions. Please try again later.';
           }
         );
         break;
@@ -81,7 +81,7 @@ export class TransactionComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching failed transactions:', error);
-            this.errorMessage = 'Failed to load transactions. Please try again later.';
+            //this.errorMessage = 'Failed to load transactions. Please try again later.';
           }
         );
         break;

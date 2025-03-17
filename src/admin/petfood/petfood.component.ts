@@ -34,7 +34,7 @@ export class PetFoodComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching pet foods:', error);
-            this.errorMessage = 'Failed to load pet foods. Please try again later.';
+            //this.errorMessage = 'Failed to load pet foods. Please try again later.';
           }
         );
         break;
@@ -45,7 +45,7 @@ export class PetFoodComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching pet food by ID:', error);
-            this.errorMessage = 'Failed to load pet food. Please try again later.';
+           // this.errorMessage = 'Failed to load pet food. Please try again later.';
           }
         );
         break;
@@ -56,7 +56,7 @@ export class PetFoodComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching pet foods by name:', error);
-            this.errorMessage = 'Failed to load pet foods. Please try again later.';
+           // this.errorMessage = 'Failed to load pet foods. Please try again later.';
           }
         );
         break;
@@ -67,7 +67,7 @@ export class PetFoodComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching pet foods by type:', error);
-            this.errorMessage = 'Failed to load pet foods. Please try again later.';
+            //this.errorMessage = 'Failed to load pet foods. Please try again later.';
           }
         );
         break;
@@ -78,7 +78,7 @@ export class PetFoodComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching pet foods by brand:', error);
-            this.errorMessage = 'Failed to load pet foods. Please try again later.';
+            //this.errorMessage = 'Failed to load pet foods. Please try again later.';
           }
         );
         break;

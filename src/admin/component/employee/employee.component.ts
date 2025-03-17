@@ -42,7 +42,7 @@ export class EmployeesComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching employees:', error);
-            this.errorMessage = 'Failed to load employees. Please try again later.';
+            //this.errorMessage = 'Failed to load employees. Please try again later.';
           }
         );
         break;
@@ -56,7 +56,7 @@ export class EmployeesComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching employee by ID:', error);
-            this.errorMessage = 'Failed to load employee. Please try again later.';
+            //this.errorMessage = 'Failed to load employee. Please try again later.';
           }
         );
         break;
@@ -70,7 +70,7 @@ export class EmployeesComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching employees by first name:', error);
-            this.errorMessage = 'Failed to load employees. Please try again later.';
+            //this.errorMessage = 'Failed to load employees. Please try again later.';
           }
         );
         break;
@@ -84,7 +84,7 @@ export class EmployeesComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching employees by position:', error);
-            this.errorMessage = 'Failed to load employees. Please try again later.';
+           // this.errorMessage = 'Failed to load employees. Please try again later.';
           }
         );
         break;

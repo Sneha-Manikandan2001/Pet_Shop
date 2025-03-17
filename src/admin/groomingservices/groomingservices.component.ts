@@ -36,7 +36,7 @@ export class GroomingServicesComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching grooming services:', error);
-            this.errorMessage = 'Failed to load grooming services. Please try again later.';
+            //this.errorMessage = 'Failed to load grooming services. Please try again later.';
           }
         );
         break;
@@ -47,7 +47,7 @@ export class GroomingServicesComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching grooming service by ID:', error);
-            this.errorMessage = 'Failed to load grooming service. Please try again later.';
+            //this.errorMessage = 'Failed to load grooming service. Please try again later.';
           }
         );
         break;
@@ -58,7 +58,7 @@ export class GroomingServicesComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching available grooming services:', error);
-            this.errorMessage = 'Failed to load available grooming services. Please try again later.';
+            //this.errorMessage = 'Failed to load available grooming services. Please try again later.';
           }
         );
         break;
@@ -69,7 +69,7 @@ export class GroomingServicesComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching unavailable grooming services:', error);
-            this.errorMessage = 'Failed to load unavailable grooming services. Please try again later.';
+           // this.errorMessage = 'Failed to load unavailable grooming services. Please try again later.';
           }
         );
         break;

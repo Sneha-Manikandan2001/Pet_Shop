@@ -39,7 +39,7 @@ export class SupplierComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching suppliers:', error);
-            this.errorMessage = 'Failed to load suppliers. Please try again later.';
+            //this.errorMessage = 'Failed to load suppliers. Please try again later.';
           }
         );
         break;
@@ -50,7 +50,7 @@ export class SupplierComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching supplier by ID:', error);
-            this.errorMessage = 'Failed to load supplier. Please try again later.';
+            //this.errorMessage = 'Failed to load supplier. Please try again later.';
           }
         );
         break;
@@ -61,7 +61,7 @@ export class SupplierComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching suppliers by name:', error);
-            this.errorMessage = 'Failed to load suppliers. Please try again later.';
+            //this.errorMessage = 'Failed to load suppliers. Please try again later.';
           }
         );
         break;
@@ -72,7 +72,7 @@ export class SupplierComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching suppliers by city:', error);
-            this.errorMessage = 'Failed to load suppliers. Please try again later.';
+            //this.errorMessage = 'Failed to load suppliers. Please try again later.';
           }
         );
         break;
@@ -83,7 +83,7 @@ export class SupplierComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching suppliers by state:', error);
-            this.errorMessage = 'Failed to load suppliers. Please try again later.';
+           // this.errorMessage = 'Failed to load suppliers. Please try again later.';
           }
         );
         break;

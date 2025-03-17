@@ -11,6 +11,7 @@ import { Addresses } from '../../models/addresses';
   styleUrls: ['./address.component.css']
 })
 export class AddressesComponent implements OnInit {
+  
   addresses: Addresses[] = [];
   newAddress: Addresses = {} as Addresses;
   showAddAddressForm: boolean = false;
@@ -35,7 +36,7 @@ export class AddressesComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching addresses:', error);
-            this.errorMessage = 'Failed to load addresses. Please try again later.';
+           // this.errorMessage = 'Failed to load addresses. Please try again later.';
           }
         );
         break;
@@ -46,7 +47,7 @@ export class AddressesComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching address by ID:', error);
-            this.errorMessage = 'Failed to load address. Please try again later.';
+           // this.errorMessage = 'Failed to load address. Please try again later.';
           }
         );
         break;
@@ -57,7 +58,7 @@ export class AddressesComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching addresses by city:', error);
-            this.errorMessage = 'Failed to load addresses. Please try again later.';
+           // this.errorMessage = 'Failed to load addresses. Please try again later.';
           }
         );
         break;
@@ -68,7 +69,7 @@ export class AddressesComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching addresses by state:', error);
-            this.errorMessage = 'Failed to load addresses. Please try again later.';
+            //this.errorMessage = 'Failed to load addresses. Please try again later.';
           }
         );
         break;
@@ -116,7 +117,7 @@ export class AddressesComponent implements OnInit {
       },
       (error) => {
         console.error('Error updating address:', error);
-        this.errorMessage = `Failed to update address: ${error.message}`;
+        //this.errorMessage = `Failed to update address: ${error.message}`;
       }
     );
   }

@@ -61,7 +61,7 @@ export class PetsComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching pets:', error);
-            this.errorMessage = 'Failed to load pets. Please try again later.';
+            //this.errorMessage = 'Failed to load pets. Please try again later.';
           }
         );
         break;
@@ -74,7 +74,7 @@ export class PetsComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching pet by ID:', error);
-            this.errorMessage = 'Failed to load pet. Please try again later.';
+            //this.errorMessage = 'Failed to load pet. Please try again later.';
           }
         );
         break;
@@ -91,7 +91,7 @@ export class PetsComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching pets by category:', error);
-            this.errorMessage = 'Failed to load pets. Please try again later.';
+           // this.errorMessage = 'Failed to load pets. Please try again later.';
           }
         );
         break;

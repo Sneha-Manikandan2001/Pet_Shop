@@ -67,7 +67,7 @@ export class UPetsComponent implements OnInit {
         },
         (error) => {
           console.error('Error fetching customer ID:', error);
-          this.errorMessage = 'Failed to load customer information. Please try again later.';
+          //this.errorMessage = 'Failed to load customer information. Please try again later.';
         }
       );
     }
@@ -86,7 +86,7 @@ export class UPetsComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching pets:', error);
-        this.errorMessage = 'Failed to load pets. Please try again later.';
+       // this.errorMessage = 'Failed to load pets. Please try again later.';
       }
     );
   }
@@ -146,7 +146,7 @@ export class UPetsComponent implements OnInit {
         },
         (error) => {
           console.error('Error processing transaction:', error);
-          this.errorMessage = 'Failed to process transaction. Please try again later.';
+         // this.errorMessage = 'Failed to process transaction. Please try again later.';
         }
       );
     } else {
@@ -177,7 +177,7 @@ export class UPetsComponent implements OnInit {
         },
         (error) => {
           console.error('Error processing transaction:', error);
-          this.errorMessage = 'Failed to process transaction. Please try again later.';
+          //this.errorMessage = 'Failed to process transaction. Please try again later.';
         }
       );
     } else {

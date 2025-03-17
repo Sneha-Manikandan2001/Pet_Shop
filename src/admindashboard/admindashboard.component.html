@@ -1,53 +1,53 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="admin-dashboard">Admin Dashboard</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="/customers">Customers</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/employees">Employees</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/suppliers">Suppliers</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/address">Address</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/transactions">Transactions</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/pets">Pets</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/petfood">Pet Foods</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/groomingservices">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/vaccinations">Vaccinations</a>
-          </li>
-        </ul>
+<body style="background-image: url('assets/userd/p1.jpg'); background-size:contain; background-position:center;">
+  <div class="content">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand text-white" routerLink="admin-dashboard">Admin Dashboard</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/admin-dashboard/customers">Customers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/admin-dashboard/employees">Employees</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/admin-dashboard/suppliers">Suppliers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/admin-dashboard/addresses">Address</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/admin-dashboard/transactions">Transactions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/admin-dashboard/pets">Pets</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/admin-dashboard/petfood">Pet Foods</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/admin-dashboard/groomingservices">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/admin-dashboard/vaccinations">Vaccinations</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
- <router-outlet></router-outlet>
+    </nav>
+
+    <router-outlet></router-outlet>
+  </div>
   <div class="running-message">
     <footer class="bg-dark text-white text-center py-3 mt-auto">
-        <p class="mb-2">© 2025 Pet Shop</p>
-        <div class="footer-links">
-          <!-- <a href="admin-login" routerLink="/admin-login" class="text-decoration-none text-white me-3">Admin Login</a> -->
-        </div>
-      </footer>
+      <div class="footer-links">
+        <a routerLink="/admin-login" class="text-decoration-none text-white me-3">© 2025 Pet Shop</a>
+      </div>
+    </footer>
   </div>
-  
- 
- 
- 
+</body>

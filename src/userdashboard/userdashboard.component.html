@@ -1,28 +1,32 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
 <div class="background">
-    <div class="d-flex flex-column min-vh-100">
+    <div class="d-flex flex-column min-vh-100 ">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg">
+      <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid d-flex justify-content-between align-items-center">
           <!-- Pet Shop Title -->
-          <a class="navbar-brand" href="#">🐾 Pet Shop</a>
+          <a class="navbar-brand text-white" href="#">Fuzzy Tails</a>
    
           <!-- Navbar Links -->
           <div>
             <ul class="navbar-nav d-flex flex-row">
               <li class="nav-item">
-                <a class="nav-link custom-link" aria-current="page" href="/">Home</a>
+                <a class="nav-link custom-link text-white" aria-current="page" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link custom-link" href="/upets">Pets</a>
+                <a class="nav-link custom-link text-white" href="/upets">Pets</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link custom-link" href="/upet-foods">Pet Foods</a>
+                <a class="nav-link custom-link text-white" href="/upet-foods">Pet Foods</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link custom-link" href="/ugroomingservices">Services</a>
+                <a class="nav-link custom-link text-white" href="/ugroomingservices">Services</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link custom-link" href="/uvaccinations">Vaccinations</a>
+                <a class="nav-link custom-link text-white" href="/uvaccinations">Vaccinations</a>
               </li>
             </ul>
           </div>
@@ -33,15 +37,68 @@
           </div>
         </div>
       </nav>
+
       <router-outlet></router-outlet>
+    
+
+
+      <!--Carousal slides-->
+      <div class="carousel">
+        <div class="slides" [style.transform]="getTransform()">
+          <div class="slide" *ngFor="let slide of slides">
+            <img [src]="slide" alt="Slide Image">
+          </div>
+        </div>
+        <button class="btn btn-primary prev" (click)="moveSlide(-1)">&#10094;</button>
+        <button class="btn btn-primary next" (click)="moveSlide(1)">&#10095;</button>
+      </div>
+
+      <div class="services">
+        <div class="service-card" *ngIf="Logos.length > 0" onclick="window.location.href='upet-foods'">
+          <div class="service-icon">
+            <img [src]="Logos[0]" alt="Dog Walking Icon">
+          </div>
+          <h3>Pet Foods</h3>
+          <p>Ensure your pets get the best nutrition with our premium pet food selection.</p>
+          <div class="arrow">
+            <i class="fas fa-arrow-right" href="/upet-foods"></i>
+          </div>
+        </div>
+        <div class="service-card" *ngIf="Logos.length > 1" onclick="window.location.href='ugroomingservices'">
+          <div class="service-icon">
+            <img [src]="Logos[1]" alt="Pet Daycare Icon">
+          </div>
+          <h3>Grooming Services</h3>
+          <p>Our experienced groomers will pamper your pets and ensure they look and feel great</p>
+          <div class="arrow">
+            <i class="fas fa-arrow-right" href="/ugroomingservices"></i>
+          </div>
+        </div>
+        <div class="service-card" *ngIf="Logos.length > 2" onclick="window.location.href='uvaccinations'">
+          <div class="service-icon">
+            <img [src]="Logos[2]" alt="Pet Grooming Icon">
+          </div>
+          <h3>Vaccinations</h3>
+          <p>Protect your pets from common diseases with our comprehensive vaccination services</p>
+          <div class="arrow">
+            <i class="fas fa-arrow-right" href="/uvaccinations"></i>
+          </div>
+        </div>
+      </div>
+      
+
+
       <!-- Footer -->
+      
       <footer class="bg-dark text-white text-center py-3 mt-auto">
-        <p class="mb-2">© 2025 Pet Shop</p>
+      
         <div class="footer-links">
-          <a href="admin-login" routerLink="/admin-login" class="text-decoration-none text-white me-3">Admin Login</a>
+          <a href="user-login" routerLink="/admin-login" class="text-decoration-none text-white me-3">© 2025 Pet Shop</a>
         </div>
       </footer>
     </div>
-  </div>
+    </div>
+  
+  </body>
    
  

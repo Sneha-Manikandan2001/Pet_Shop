@@ -35,7 +35,7 @@ export class VaccinationsComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching vaccinations:', error);
-            this.errorMessage = 'Failed to load vaccinations. Please try again later.';
+           // this.errorMessage = 'Failed to load vaccinations. Please try again later.';
           }
         );
         break;
@@ -46,7 +46,7 @@ export class VaccinationsComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching vaccination by ID:', error);
-            this.errorMessage = 'Failed to load vaccination. Please try again later.';
+           // this.errorMessage = 'Failed to load vaccination. Please try again later.';
           }
         );
         break;
@@ -57,7 +57,7 @@ export class VaccinationsComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching available vaccinations:', error);
-            this.errorMessage = 'Failed to load vaccinations. Please try again later.';
+            //this.errorMessage = 'Failed to load vaccinations. Please try again later.';
           }
         );
         break;
@@ -68,7 +68,7 @@ export class VaccinationsComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching unavailable vaccinations:', error);
-            this.errorMessage = 'Failed to load vaccinations. Please try again later.';
+            //this.errorMessage = 'Failed to load vaccinations. Please try again later.';
           }
         );
         break;
