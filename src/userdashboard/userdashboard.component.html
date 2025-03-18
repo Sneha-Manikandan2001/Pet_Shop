@@ -37,22 +37,23 @@
           </div>
         </div>
       </nav>
-
+ 
       <router-outlet></router-outlet>
-    
-
-
+   
+ 
+ 
       <!--Carousal slides-->
       <div class="carousel">
         <div class="slides" [style.transform]="getTransform()">
-          <div class="slide" *ngFor="let slide of slides">
+          <div class="slide" *ngFor="let slide of slides; let i=index">
             <img [src]="slide" alt="Slide Image">
+            <div class="slide-text mb-4">{{ slideTexts[i] }}</div>
           </div>
         </div>
         <button class="btn btn-primary prev" (click)="moveSlide(-1)">&#10094;</button>
         <button class="btn btn-primary next" (click)="moveSlide(1)">&#10095;</button>
       </div>
-
+ 
       <div class="services">
         <div class="service-card" *ngIf="Logos.length > 0" onclick="window.location.href='upet-foods'">
           <div class="service-icon">
@@ -85,20 +86,21 @@
           </div>
         </div>
       </div>
-      
-
-
+     
+ 
+ 
       <!-- Footer -->
-      
+     
       <footer class="bg-dark text-white text-center py-3 mt-auto">
-      
+     
         <div class="footer-links">
           <a href="user-login" routerLink="/admin-login" class="text-decoration-none text-white me-3">© 2025 Pet Shop</a>
         </div>
       </footer>
     </div>
     </div>
-  
+ 
   </body>
    
+ 
  

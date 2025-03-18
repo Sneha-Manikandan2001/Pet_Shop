@@ -4,12 +4,13 @@ body{
 *{
   margin: 1;
   padding: 0;
+  
 }
 .container{
   width: 100%;
   height: 100vh;
-  background-color: beige;
-  background-size: cover;
+  /*background-color: beige;*/
+  /*background-size: cover;*/
   color: #fff;
   display: flex;
   align-items: center;
@@ -23,7 +24,7 @@ body{
 }
 .card{
   width: 350px;
-  height: 550px;
+  height: 450px;
   box-shadow: 0 0 20px 20px rgba(0,0,0,0.26);
   perspective: 1000px;
 }
@@ -34,13 +35,14 @@ body{
   transform-style: preserve-3d;
   transition: 2s;
 }
-.card-front, .card-back{
+.card-front{
   position: absolute;
   width: 100%;
   height: 100%;
   background-position: center;
   background-size: cover;
-  background-image: linear-gradient(rgba(13, 13, 121, 0.8),rgba(13, 13, 121, 0.8));/*, url("Images/sign2.jpg"); */
+  background-color: rgba(90, 56, 2, 0.1);
+  /*background-image: linear-gradient(rgba(13, 13, 121, 0.8),rgba(13, 13, 121, 0.8));/*, url("Images/sign2.jpg"); */
   padding: 55px;
   box-sizing: border-box;
   backface-visibility: hidden;
@@ -73,8 +75,8 @@ button{
   width: 100%;
   background: transparent;
   border: 1px solid #fff;
-  background-color: rgb(15, 200, 200);
-  margin: 35px 0 10px;
+  background-color:chocolate;
+  margin: 35px 0 30px;
   height: 32px;
   font-size: 14px;
   border-radius: 20px;
@@ -114,3 +116,9 @@ span{
   text-align: center;
   font-size: 14px;
   margin-top: 8px;}
+  .form-label {
+    color: black;
+  }
+  .text-white {
+    color: chocolate !important;
+  }

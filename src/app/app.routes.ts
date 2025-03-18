@@ -21,10 +21,7 @@ import { AdmindashboardComponent } from '../admindashboard/admindashboard.compon
 import { UPetsComponent } from '../user/component/pets/pets.component';
  
 export const routes: Routes = [
-    {path: 'user-login', component: UserLoginComponent},
-    {path: 'customer-register', component: CustomerRegisterComponent},
-    {path: 'admin-login', component: AdminLoginComponent},    
-    {path:'user-register',component:UserRegisterComponent},
+  
 
     {path:'admin-dashboard',component:AdmindashboardComponent,children:[{path: 'employees',component:EmployeesComponent},
     {path: 'groomingservices',component:GroomingServicesComponent},
@@ -42,7 +39,11 @@ export const routes: Routes = [
         {path: 'ugroomingservices',component:UGroomingServicesComponent},
         {path: 'upet-foods',component:UPetfoodComponent},
         {path: 'uvaccinations',component:UVaccinationsComponent},
-        {path:'upets',component:UPetsComponent}
+        {path:'upets',component:UPetsComponent},
+        {path: 'user-login', component: UserLoginComponent},
+        {path: 'customer-register', component: CustomerRegisterComponent},
+        {path: 'admin-login', component: AdminLoginComponent},    
+        {path:'user-register',component:UserRegisterComponent}
     ]}
     
     

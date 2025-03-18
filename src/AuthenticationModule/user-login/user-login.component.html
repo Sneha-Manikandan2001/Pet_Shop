@@ -1,13 +1,13 @@
-<body>
+<body style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('assets/userd/image1.JPG'); background-size:contain; background-position:center;">
   <div class="container">
      <div class="card">
        <div class="inner-box" id="card">
            <div class="card-front">
-       <h3 class="text-center text-primary mb-4">Sign In</h3>
+       <h3 class="text-center text-white mb-4">Sign In</h3>
        <form #loginForm="ngForm" (ngSubmit)="UserLogin()">
          <!-- Username Field -->
          <div class="form-group mb-3">
-           <label for="emailInput" class="form-label">User Name</label>
+           <label for="emailInput" class="form-label" >User Name</label>
            <input
              type="text"
              class="form-control"
@@ -54,7 +54,7 @@
          <!-- Sign In Button -->
          <button
            type="submit"
-           class="btn btn-primary w-100 mb-3"
+           class="btn btn-outline-success w-100 mb-3"
          >
            Sign In
          </button>

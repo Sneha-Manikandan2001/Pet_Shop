@@ -32,7 +32,6 @@ export class UGroomingServicesComponent implements OnInit {
       },
       (error: HttpErrorResponse) => {
         console.error('Error fetching grooming services:', error);
-       // this.errorMessage = 'Failed to load grooming services. Please try again later.';
       }
     );
   }

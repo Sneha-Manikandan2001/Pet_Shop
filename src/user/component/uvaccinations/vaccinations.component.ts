@@ -16,15 +16,23 @@ export class UVaccinationsComponent implements OnInit {
   constructor(private vaccinationsService: VaccinationsService) {}
 
   ngOnInit(): void {
+    try{
     this.getVaccinations();
+    }
+    catch(err)
+     { 
+      
+     }
   }
 
   getVaccinations(): void {
     this.vaccinationsService.getAllVaccinations().subscribe({
       next: (data) => {
+        console.log(data);
         this.vaccinations = data;
       },
       error: (err) => {
+        
         console.error('Error fetching vaccinations:', err);
       }
     });

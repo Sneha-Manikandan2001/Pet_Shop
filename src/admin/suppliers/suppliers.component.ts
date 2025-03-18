@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { SupplierService } from '../../services/supplierservices';
+import { AddressesService } from '../../services/addressservice';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Supplier } from '../../models/Supplier';
 import { Addresses } from '../../models/addresses';
-
+ 
 @Component({
   selector: 'app-supplier',
   imports: [CommonModule, FormsModule],
@@ -13,33 +14,33 @@ import { Addresses } from '../../models/addresses';
 })
 export class SupplierComponent implements OnInit {
   suppliers: Supplier[] = [];
+  addresses: Addresses[] = [];
   newSupplier: Supplier = {} as Supplier;
   newAddress: Addresses = {} as Addresses;
   showAddSupplierForm: boolean = false;
-  editSupplierIndex: number | null = null; 
+  showAddressModal: boolean = false;
+  editSupplierIndex: number | null = null;
   showEditForm: boolean = false;
   errorMessage: string | null = null;
   filterType: string = 'getAll';
   filterValue: string = '';
-
-  constructor(private suppliersService: SupplierService) {}
-
+ 
+  constructor(private suppliersService: SupplierService, private addressesService: AddressesService) {}
+ 
   ngOnInit(): void {
     this.getSuppliers();
+    this.getAddresses();
   }
-
-  // Fetch suppliers based on filter type
+ 
   getSuppliers(): void {
     switch (this.filterType) {
       case 'getAll':
         this.suppliersService.getAllSuppliers().subscribe(
           (data) => {
             this.suppliers = data;
-          console.log(this.suppliers)
           },
           (error) => {
             console.error('Error fetching suppliers:', error);
-            //this.errorMessage = 'Failed to load suppliers. Please try again later.';
           }
         );
         break;
@@ -50,7 +51,6 @@ export class SupplierComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching supplier by ID:', error);
-            //this.errorMessage = 'Failed to load supplier. Please try again later.';
           }
         );
         break;
@@ -61,7 +61,6 @@ export class SupplierComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching suppliers by name:', error);
-            //this.errorMessage = 'Failed to load suppliers. Please try again later.';
           }
         );
         break;
@@ -72,7 +71,6 @@ export class SupplierComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching suppliers by city:', error);
-            //this.errorMessage = 'Failed to load suppliers. Please try again later.';
           }
         );
         break;
@@ -83,20 +81,40 @@ export class SupplierComponent implements OnInit {
           },
           (error) => {
             console.error('Error fetching suppliers by state:', error);
-           // this.errorMessage = 'Failed to load suppliers. Please try again later.';
           }
         );
         break;
     }
   }
-
-  // Add a new supplier
+ 
+  getAddresses(): void {
+    this.addressesService.getAllAddresses().subscribe(
+      (data) => {
+        this.addresses = data;
+      },
+      (error) => {
+        console.error('Error fetching addresses:', error);
+      }
+    );
+  }
+ 
+  showAddressList(): void {
+    this.showAddressModal = true;
+  }
+ 
+  closeAddressList(): void {
+    this.showAddressModal = false;
+  }
+ 
+  selectAddress(addressId: number): void {
+    this.newAddress.addressId = addressId;
+    this.closeAddressList();
+  }
+ 
   addSupplier(): void {
     this.newSupplier.address = this.newAddress;
-    console.log(this.newSupplier)
     this.suppliersService.addSupplier(this.newSupplier).subscribe(
       (data) => {
-        console.log('Supplier added successfully', data);
         this.newSupplier = {} as Supplier;
         this.newAddress = {} as Addresses;
         this.showAddSupplierForm = false;
@@ -105,17 +123,15 @@ export class SupplierComponent implements OnInit {
       (error) => console.error('Error adding supplier:', error)
     );
   }
-
+ 
   toggleAddSupplierForm(): void {
     this.showAddSupplierForm = !this.showAddSupplierForm;
   }
-
-  // Enable edit mode for a specific supplier
+ 
   editSupplier(index: number): void {
     this.editSupplierIndex = index;
   }
-
-  // Save changes to supplier details (excluding address)
+ 
   saveSupplier(index: number): void {
     const updateSupplier = this.suppliers[index];
     this.suppliersService.updateSupplier(updateSupplier.supplierId, updateSupplier).subscribe(
@@ -125,11 +141,9 @@ export class SupplierComponent implements OnInit {
       (error) => console.error('Error updating supplier:', error)
     );
   }
-
-  // Cancel edit and revert changes
+ 
   cancelEdit(): void {
     this.editSupplierIndex = null;
   }
 }
-
-
+ 

@@ -56,7 +56,7 @@ main {
 .card .info {
   position: relative;
   z-index: 3;
-  color: black;
+  color: white;
   opacity: 0;
   transform: translateY(30px);
   transition: 0.5s;

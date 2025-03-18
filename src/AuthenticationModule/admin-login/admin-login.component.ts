@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {CommonModule} from "@angular/common";
 import { AuthenticationService } from '../services/auth-services.service';
@@ -38,4 +38,6 @@ export class AdminLoginComponent {
     });
 }
 }
+
+
  
